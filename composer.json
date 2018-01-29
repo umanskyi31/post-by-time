@@ -1,0 +1,19 @@
+{
+    "name": "vum/post-by-time",
+    "description": "Telegram bot which send notification",
+    "authors": [
+        {
+            "name": "Vlad Umanskyi",
+            "email": "vladumanskyi@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^6.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "":"./"
+        }
+    }
+}
