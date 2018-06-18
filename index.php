@@ -1,3 +1,9 @@
 <?php
 
-//init project here
+require 'vendor/autoload.php';
+
+try {
+    (new \Dotenv\Dotenv(__DIR__))->load();
+} catch (Dotenv\Exception\InvalidPathException $e) {
+    //...
+}

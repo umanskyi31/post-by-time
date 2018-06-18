@@ -4,11 +4,9 @@ namespace Notification;
 
 class PostByTime implements Notification
 {
-    private $_login;
-
     public function send(): void
     {
-        // TODO: Implement send() method.
+        print("Test");
     }
 
     public function timer(array $time): void

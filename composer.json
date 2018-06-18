@@ -1,5 +1,5 @@
 {
-    "name": "vum/post-by-time",
+    "name": "post-by-time",
     "description": "Telegram bot which send notification",
     "authors": [
         {
@@ -7,13 +7,25 @@
             "email": "vladumanskyi@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "vlucas/phpdotenv": "^2.4"
+    },
     "require-dev": {
-        "phpunit/phpunit": "^6.4"
+        "phpunit/phpunit": "~7.0"
     },
     "autoload": {
         "psr-4": {
-            "":"./"
+            "Notification\\" : "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts" : {
+        "post-root-package-install" : [
+            "@php -r \"file_exists(.env) || copy('.env.example', '.env');\""
+        ]
     }
 }
