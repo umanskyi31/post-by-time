@@ -15,4 +15,13 @@ interface Notification
      * @param array $time - Params for timer
     */
     public function timer(array $time):void;
+
+    /**
+     * Get message from user
+     *
+     * @return string
+     */
+    public function getMessage():string;
+
+
 }
