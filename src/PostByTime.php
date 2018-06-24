@@ -13,4 +13,9 @@ class PostByTime implements Notification
     {
         // TODO: Implement timer() method.
     }
+
+    public function getMessage(): string
+    {
+        // TODO: Implement getMessage() method.
+    }
 }

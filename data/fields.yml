@@ -1,0 +1,12 @@
+
+#Use tag for title
+name: [title]
+
+#Use tag for description
+description: [descritpion]
+
+#Use tag for date created
+date_created: [date_created]
+
+#Tag when should article published
+date_published: [date_published]
