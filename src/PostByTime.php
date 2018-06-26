@@ -2,8 +2,23 @@
 
 namespace Notification;
 
+use Notification\Fields\FieldsInterface;
+
 class PostByTime implements Notification
 {
+
+    protected $fields;
+
+    public function __construct(FieldsInterface $fields)
+    {
+        $this->fields = $fields;
+    }
+
+    public function getFields():FieldsInterface
+    {
+        return $this->fields;
+    }
+
     public function send(): void
     {
         print("Test");

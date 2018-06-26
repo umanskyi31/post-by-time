@@ -1,5 +1,11 @@
 <?php
 
+//only on dev
+error_reporting(E_ALL);
+
+//Need root path to project
+define("ROOT_PATH", __DIR__);
+
 require 'vendor/autoload.php';
 
 try {
@@ -7,3 +13,9 @@ try {
 } catch (Dotenv\Exception\InvalidPathException $e) {
     //...
 }
+
+$postByTime  = new \Notification\PostByTime(
+    (new \Notification\Fields\GetFields(
+        (new \Symfony\Component\Yaml\Yaml())
+    ))
+);
