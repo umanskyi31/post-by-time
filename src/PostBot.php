@@ -4,16 +4,25 @@ namespace Notification;
 
 use Notification\Fields\FieldsInterface;
 
-class PostByTime implements Notification
+class PostBot implements Notification
 {
-
+    /**
+     * @var FieldsInterface
+     */
     protected $fields;
 
+    /**
+     * PostByTime constructor.
+     * @param FieldsInterface $fields
+     */
     public function __construct(FieldsInterface $fields)
     {
         $this->fields = $fields;
     }
 
+    /**
+     * @return FieldsInterface
+     */
     public function getFields():FieldsInterface
     {
         return $this->fields;

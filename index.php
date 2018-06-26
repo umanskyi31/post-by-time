@@ -1,5 +1,4 @@
 <?php
-
 //only on dev
 error_reporting(E_ALL);
 
@@ -14,7 +13,7 @@ try {
     //...
 }
 
-$postByTime  = new \Notification\PostByTime(
+$postByTime  = new \Notification\PostBot(
     (new \Notification\Fields\GetFields(
         (new \Symfony\Component\Yaml\Yaml())
     ))
