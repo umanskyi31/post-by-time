@@ -62,17 +62,20 @@ class BotRequest implements RequestsInterface
 
             $curl = curl_init($url);
 
-
             //worked only with param "text" - set data and set only with params "text"
             curl_setopt_array($curl, array_merge($data, $this->options));
 
             $result = curl_exec($curl);
 
-            //todo check result
+            if ($result === false) {
+                throw new \Exception("Error " . curl_error($curl));
+            }
 
             curl_close($curl);
 
+
         } catch (\Exception $e) {
+            //todo - in future using log
             print $e->getMessage() . ' ' . $e->getCode();
         }
     }

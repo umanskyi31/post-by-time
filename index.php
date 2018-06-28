@@ -16,5 +16,6 @@ try {
 $postByTime  = new \Notification\PostBot(
     (new \Notification\Fields\GetFields(
         (new \Symfony\Component\Yaml\Yaml())
-    ))
+    )),
+    (new \Notification\Requests\BotRequest())
 );

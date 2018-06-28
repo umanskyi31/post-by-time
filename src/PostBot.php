@@ -3,6 +3,8 @@
 namespace Notification;
 
 use Notification\Fields\FieldsInterface;
+use Notification\Requests\BotRequest;
+use Notification\Requests\RequestsInterface;
 
 class PostBot implements Notification
 {
@@ -12,11 +14,19 @@ class PostBot implements Notification
     protected $fields;
 
     /**
+     * @var RequestsInterface
+     */
+    protected $request;
+
+    /**
      * PostByTime constructor.
      * @param FieldsInterface $fields
+     * @param BotRequest $request
      */
-    public function __construct(FieldsInterface $fields)
-    {
+    public function __construct(
+        FieldsInterface $fields,
+        BotRequest $request
+    ) {
         $this->fields = $fields;
     }
 
@@ -28,9 +38,17 @@ class PostBot implements Notification
         return $this->fields;
     }
 
+    /**
+     * @return RequestsInterface
+     */
+    public function getRequest(): RequestsInterface
+    {
+        return $this->request;
+    }
+
     public function send(): void
     {
-        print("Test");
+        $this->getRequest()->send('https://example.com');
     }
 
     public function timer(array $time): void
