@@ -6,7 +6,7 @@ use Notification\Fields\FieldsInterface;
 use Notification\Requests\BotRequest;
 use Notification\Requests\RequestsInterface;
 
-class PostBot implements Notification
+final class PostBot implements Notification
 {
     /**
      * @var FieldsInterface
@@ -28,6 +28,7 @@ class PostBot implements Notification
         BotRequest $request
     ) {
         $this->fields = $fields;
+        $this->request = $request;
     }
 
     /**
@@ -46,9 +47,17 @@ class PostBot implements Notification
         return $this->request;
     }
 
-    public function send(): void
+    /**
+     * @param string $method
+     * @param array $argv
+     */
+    public function send(string $method, array $argv): void
     {
-        $this->getRequest()->send('https://example.com');
+        $this->getRequest()->send(
+            getenv('BOT_URL'),
+            $method,
+            $argv
+        );
     }
 
     public function timer(array $time): void

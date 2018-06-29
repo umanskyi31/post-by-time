@@ -6,8 +6,10 @@ interface Notification
 {
     /**
      * Send notification for user
-    */
-    public function send():void;
+     * @param string $method
+     * @param array $argv
+     */
+    public function send(string $method, array $argv):void;
 
     /**
      * Get message from user

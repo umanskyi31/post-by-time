@@ -16,8 +16,9 @@ interface RequestsInterface
 
     /**
      * @param string $url
+     * @param string $method
      * @param array $data
      */
-    public function send(string $url, array $data = array()):void;
+    public function send(string $url, string $method, array $data = array()):void;
 
 }
