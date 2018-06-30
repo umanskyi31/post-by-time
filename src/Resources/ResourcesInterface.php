@@ -19,4 +19,10 @@ interface ResourcesInterface
      * @return mixed
      */
     public function parse();
+
+    /**
+     * Return clear answer from server
+     * @return mixed
+     */
+    public function getResponse();
 }

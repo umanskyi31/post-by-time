@@ -3,8 +3,32 @@ namespace Notification\Resources;
 
 class JsonResource implements ResourcesInterface
 {
-
+    /**
+     * @var array|string
+     */
     protected $resource;
+
+    /**
+     * Parse answer from server
+     * @var mixed
+     */
+    protected $response;
+
+    /**
+     * @return mixed
+     */
+    public function getResponse()
+    {
+        return $this->response;
+    }
+
+    /**
+     * @param $response
+     */
+    public function setResponse($response): void
+    {
+        $this->response = $response;
+    }
 
     /**
      * @return array|string
@@ -34,7 +58,10 @@ class JsonResource implements ResourcesInterface
 
             $resource = json_decode($this->getResource());
 
-            var_dump($resource);
+            foreach ($resource as $data) {
+                //TODO - parse data
+            }
+
 
         } catch (\Exception $e) {
             echo $e->getCode() . ' ' . $e->getMessage();
