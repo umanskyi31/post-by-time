@@ -54,10 +54,18 @@ final class PostBot implements Notification
     public function send(string $method, array $argv): void
     {
         $this->getRequest()->send(
-            getenv('BOT_URL'),
+            self::getDirectLink(),
             $method,
             $argv
         );
+    }
+
+    /**
+     * @return string
+     */
+    protected static function getDirectLink(): string
+    {
+        return getenv('BOT_URL') . getenv('TOKEN') . '/';
     }
 
     public function timer(array $time): void

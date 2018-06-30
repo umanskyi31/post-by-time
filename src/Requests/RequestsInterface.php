@@ -5,9 +5,9 @@ namespace Notification\Requests;
 interface RequestsInterface
 {
     /**
-     * @param string $content
+     * @param array $content
      */
-    public function setMessage(string $content);
+    public function setMessage(array $content);
 
     /**
      * @return string
@@ -18,7 +18,8 @@ interface RequestsInterface
      * @param string $url
      * @param string $method
      * @param array $data
+     * @return string
      */
-    public function send(string $url, string $method, array $data = array()):void;
+    public function send(string $url, string $method, array $data = array()):string;
 
 }

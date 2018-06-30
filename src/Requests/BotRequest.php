@@ -11,6 +11,12 @@ class BotRequest implements RequestsInterface
     protected $options;
 
     /**
+     * Array content
+     * @var string
+     */
+    protected $message;
+
+    /**
      * BotRequest constructor.
      */
     public function __construct()
@@ -36,11 +42,11 @@ class BotRequest implements RequestsInterface
     }
 
     /**
-     * @param string $content
+     * @param array $content
      */
-    public function setMessage(string $content)
+    public function setMessage(array $content = array())
     {
-        // TODO: Implement setMessage() method.
+        $this->message = http_build_query($content);
     }
 
     /**
@@ -48,19 +54,28 @@ class BotRequest implements RequestsInterface
      */
     public function getMessage(): string
     {
-        // TODO: Implement getMessage() method.
+        return $this->message;
     }
 
     /**
      * @param string $url
      * @param string $method
      * @param array $data
+     * @return string
      */
-    public function send(string $url, string $method, array $data = array()): void
+    public function send(string $url, string $method, array $data = array()): string
     {
         try {
 
-            $curl = curl_init($url);
+            $buildLink = $url . $method;
+
+            //set data and convert to string
+            $this->setMessage($data);
+
+            //after convert get new data
+            $buildLink .= $this->getMessage();
+
+            $curl = curl_init($buildLink);
 
             //worked only with param "text" - set data and set only with params "text"
             curl_setopt_array($curl, array_merge($data, $this->options));
@@ -71,12 +86,14 @@ class BotRequest implements RequestsInterface
                 throw new \Exception("Error " . curl_error($curl));
             }
 
+            $result = json_decode($result);
+
             curl_close($curl);
 
+            return $result;
 
         } catch (\Exception $e) {
-            //todo - in future using log
-            print $e->getMessage() . ' ' . $e->getCode();
+            echo $e->getMessage() . ' ' . $e->getCode();
         }
     }
 }
