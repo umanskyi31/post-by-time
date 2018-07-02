@@ -3,6 +3,7 @@
 namespace Notification\Fields;
 
 use Dotenv\Exception\InvalidFileException;
+use Notification\Exception\FileNotFound;
 use Symfony\Component\Yaml\Yaml;
 
 class GetFields implements FieldsInterface
@@ -33,11 +34,12 @@ class GetFields implements FieldsInterface
 
     /**
      * @return array
+     * @throws FileNotFound
      */
     protected function getSource():array
     {
         if(!file_exists(ROOT_PATH . getenv('CONFIG_FIELD_PATH'))) {
-            throw new InvalidFileException("File not found");
+            throw new FileNotFound("File not found", 404);
         }
 
         $yaml = $this->getYaml();
@@ -48,6 +50,7 @@ class GetFields implements FieldsInterface
 
     /**
      * @return array
+     * @throws FileNotFound
      */
     public function getFields()
     {
@@ -56,6 +59,7 @@ class GetFields implements FieldsInterface
 
     /**
      * @return array
+     * @throws FileNotFound
      */
     public function getTags()
     {
@@ -64,6 +68,7 @@ class GetFields implements FieldsInterface
 
     /**
      * @return array
+     * @throws FileNotFound
      */
     public function getKeys()
     {
