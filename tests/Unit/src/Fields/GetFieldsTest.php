@@ -19,57 +19,6 @@ class GetFieldsTest extends TestCase
         $this->assertSame($yml, $field->getYaml());
     }
 
-    /**
-     * @expectedException \Notification\Exception\FileNotFound
-     * @expectedExceptionMessage File not found
-     * @expectedExceptionCode 404
-     */
-    public function testGetSourceFailure()
-    {
-        $field = $this->getMockBuilder(GetFieldsMock::class)
-            ->disableOriginalConstructor()
-            ->setMethods(['getYaml'])
-            ->getMock();
-
-        /** @var Yaml */
-        $yml = $this->getMockBuilder(Yaml::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $field->expects($this->any())
-            ->method('getYaml')
-            ->willReturn($yml);
-
-
-        $field->getSource();
-    }
-
-    public function testGetSource()
-    {
-        $field = $this->getMockBuilder(GetFieldsMock::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $this->assertTrue(is_array($field->getSource()));
-
-    }
-
-    public function testGetFields()
-    {
-        $field = $this->getMockBuilder(GetFieldsMock::class)
-            ->disableOriginalConstructor()
-            ->setMethods(['getSource'])
-            ->getMock();
-
-        $field->expects($this->any())
-            ->method('getSource')
-            ->willReturn(['key' => 'test_params']);
-
-        $this->assertEquals($field->getFields(), ['key' => 'test_params']);
-        $this->assertEquals($field->getTags(),   array_values(['key' => 'test_params']));
-        $this->assertEquals($field->getKeys(),   array_keys(['key' => 'test_params']));
-    }
-
 }
 
 class GetFieldsMock extends GetFields
