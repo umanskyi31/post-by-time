@@ -25,7 +25,7 @@
 >
     <testsuites>
         <testsuite name="post-by-time">
-            <directory>Tests</directory>
+            <directory>./tests</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -38,7 +38,4 @@
             </exclude>
         </whitelist>
     </filter>
-    <logging>
-        <log type="coverage-clover" target="storage/logs/clover.xml"/>
-    </logging>
 </phpunit>
