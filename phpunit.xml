@@ -28,6 +28,16 @@
             <directory>Tests</directory>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist>
+            <directory>./src</directory>
+            <exclude>
+                <directory>./data</directory>
+                <directory>./storage</directory>
+                <directory>./vendor</directory>
+            </exclude>
+        </whitelist>
+    </filter>
     <logging>
         <log type="coverage-clover" target="storage/logs/clover.xml"/>
     </logging>
