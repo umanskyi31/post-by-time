@@ -12,7 +12,7 @@ before_script:
   - composer install --no-interaction
 
 script:
-  - vendor/bin/phpunit
+  - vendor/bin/phpunit --coverage-clover storage/logs/clover.xml
 
 after_script:
   - bin/coveralls -v
