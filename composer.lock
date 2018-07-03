@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "30b5ed8371c4ebf9427debee179a00cd",
+    "content-hash": "4d053d22fa8ec467beeb01e01b5a9af3",
     "packages": [
         {
             "name": "fig-r/psr2r-sniffer",

@@ -28,4 +28,7 @@
             <directory>Tests</directory>
         </testsuite>
     </testsuites>
+    <logging>
+        <log type="coverage-clover" target="storage/logs/clover.xml"/>
+    </logging>
 </phpunit>
