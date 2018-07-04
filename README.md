@@ -14,4 +14,4 @@ It's help for users which have blog and wanted posted from telegram to own site 
 - [ ] Set logger to project
 - [ ] Include DB
 - [ ] Cover code with unit tests
-- [ ] Setup CI (Travis)
+- [X] Setup CI (Travis)

@@ -1,4 +1,7 @@
 <?php
+//Need root path to project
+define("ROOT_PATH", __DIR__ . '/local.post-by-time.com/');
+
 date_default_timezone_set('UTC');
 
 $config = [

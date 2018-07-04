@@ -5,13 +5,13 @@ error_reporting(E_ALL);
 //Need root path to project
 define("ROOT_PATH", __DIR__);
 
-require 'vendor/autoload.php';
+require ROOT_PATH . '/vendor/autoload.php';
 
 //Include data which represent data from browser or cli
-$config = include "config.php";
+$config = include ROOT_PATH . "/app.php";
 
 try {
-    (new \Dotenv\Dotenv(__DIR__))->load();
+    (new \Dotenv\Dotenv(ROOT_PATH))->load();
 } catch (Dotenv\Exception\InvalidPathException $e) {
     echo $e->getMessage() . ' ' . $e->getCode();
 }
