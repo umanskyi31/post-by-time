@@ -31,6 +31,13 @@ class GetFields implements FieldsInterface
         return $this->yaml;
     }
 
+    /**
+     * @return bool
+     */
+    public function hasFileConfig():bool
+    {
+        return file_exists(ROOT_PATH . getenv('CONFIG_FIELD_PATH'));
+    }
 
     /**
      * @return array
@@ -38,7 +45,7 @@ class GetFields implements FieldsInterface
      */
     protected function getSource():array
     {
-        if(!file_exists(ROOT_PATH . getenv('CONFIG_FIELD_PATH'))) {
+        if(!$this->hasFileConfig()) {
             throw new FileNotFound("File not found", 404);
         }
 

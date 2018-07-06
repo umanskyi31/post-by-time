@@ -11,7 +11,7 @@ It's help for users which have blog and wanted posted from telegram to own site 
 - [x] Use telegram bot
 - [x] Build structure of project
 - [x] Check cli or browser activite
+- [X] Setup CI (Travis)
 - [ ] Set logger to project
 - [ ] Include DB
 - [ ] Cover code with unit tests
-- [X] Setup CI (Travis)

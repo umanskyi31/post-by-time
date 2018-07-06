@@ -26,10 +26,21 @@ class GetFieldsTest extends TestCase
      */
     public function testGetSourceFailure()
     {
-        $yaml = new Yaml();
+        $field = $this->getMockBuilder(GetFieldsMock::class)
+            ->disableOriginalConstructor()
+            ->setMethods(['hasFileConfig'])
+            ->getMock();
 
-        $field = new GetFieldsMock($yaml);
+        $field->expects($this->once())
+            ->method('hasFileConfig')
+            ->willReturn(false);
 
+        $field->getSource();
+    }
+
+    public function testGetSourceSuccess()
+    {
+        $field = new GetFieldsMock((new \Symfony\Component\Yaml\Yaml()));
         $this->assertTrue(is_array($field->getSource()));
     }
 
