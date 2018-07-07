@@ -40,7 +40,7 @@ abstract class Validate
     /**
      * @return mixed
      */
-    public static function getCanUseMthods()
+    public static function getCanUseMethods()
     {
         return self::$canUseMthods;
     }

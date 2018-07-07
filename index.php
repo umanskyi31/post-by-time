@@ -32,8 +32,11 @@ $argv = $config['data'] ?? [];
 //start work with bot
 $postByTime->send($config['method'], $argv);
 
+//waite answer from server
+//sleep(5);
+
 //answer from server
-$postByTime->getMessage();
+echo $postByTime->getMessage();
 
 echo PHP_EOL . "End time: " . date('Y-m-d H:i:s') . PHP_EOL;
 echo "\033[0;34m===========END WORK===========\033[0m" . PHP_EOL;

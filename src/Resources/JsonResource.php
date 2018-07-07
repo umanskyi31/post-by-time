@@ -57,10 +57,24 @@ class JsonResource implements ResourcesInterface
         try {
             $resource = json_decode($this->getResource());
 
-            foreach ($resource as $data) {
-                //TODO - parse data
+            if (!isset($resource->ok) && !$resource->ok) {
+               return $this->setResponse('Sorry, but server temporary not available');
             }
 
+
+            if (!$resource->result) {
+               return $this->setResponse('Not answer');
+            }
+            //todo check which method is coming
+
+            $response = '';
+
+            //build answer
+            foreach ($resource->result as $key => $data) {
+                $response .= $key . ' => ' . $data . PHP_EOL;
+            }
+
+            return $this->setResponse($response);
 
         } catch (\Exception $e) {
             echo $e->getCode() . ' ' . $e->getMessage();
