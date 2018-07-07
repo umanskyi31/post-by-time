@@ -55,7 +55,6 @@ class JsonResource implements ResourcesInterface
     public function parse()
     {
         try {
-
             $resource = json_decode($this->getResource());
 
             foreach ($resource as $data) {

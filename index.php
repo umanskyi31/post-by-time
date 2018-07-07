@@ -35,5 +35,5 @@ $postByTime->send($config['method'], $argv);
 //answer from server
 $postByTime->getMessage();
 
-echo "End time: " . date('Y-m-d H:i:s') . PHP_EOL;
+echo PHP_EOL . "End time: " . date('Y-m-d H:i:s') . PHP_EOL;
 echo "\033[0;34m===========END WORK===========\033[0m" . PHP_EOL;

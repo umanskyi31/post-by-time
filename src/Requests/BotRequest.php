@@ -24,7 +24,7 @@ class BotRequest implements RequestsInterface
         //set default options
         $this->options = [
             CURLOPT_TIMEOUT => 60,
-            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_RETURNTRANSFER =>  true,
             CURLINFO_HEADER_OUT => true,
             CURLOPT_POST => false,
             CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
@@ -78,17 +78,17 @@ class BotRequest implements RequestsInterface
             $curl = curl_init($buildLink);
 
             //worked only with param "text" - set data and set only with params "text"
-            curl_setopt_array($curl, array_merge($data, $this->options));
+            $data = !empty($data) ? array_merge($this->options, $data) : $this->options;
+
+            curl_setopt_array($curl, $data);
 
             $result = curl_exec($curl);
+
+            curl_close($curl);
 
             if ($result === false) {
                 throw new \Exception("Error " . curl_error($curl));
             }
-
-            $result = json_decode($result);
-
-            curl_close($curl);
 
             return $result;
 

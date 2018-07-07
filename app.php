@@ -1,15 +1,10 @@
 <?php
-//Need root path to project
-define("ROOT_PATH", __DIR__ . '/local.post-by-time.com/');
-
 date_default_timezone_set('UTC');
 
 $config = [
     'method' => null,
     'data'   => null
 ];
-
-//Method name - It's mean using method for send request to telegram api
 
 if (PHP_SAPI !== 'cli') {
     if (empty($_GET['method'])) {
