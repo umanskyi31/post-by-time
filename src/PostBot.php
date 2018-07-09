@@ -92,7 +92,7 @@ final class PostBot implements Notification
         // TODO: Implement timer() method.
     }
 
-    public function getMessage()
+    public function getMessage():string
     {
         $this->getResources()->parse();
 

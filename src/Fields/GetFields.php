@@ -2,8 +2,8 @@
 
 namespace Notification\Fields;
 
-use Dotenv\Exception\InvalidFileException;
 use Notification\Exception\FileNotFound;
+use Notification\Logger\Logger;
 use Symfony\Component\Yaml\Yaml;
 
 class GetFields implements FieldsInterface
@@ -46,6 +46,7 @@ class GetFields implements FieldsInterface
     protected function getSource():array
     {
         if(!$this->hasFileConfig()) {
+
             throw new FileNotFound("File not found", 404);
         }
 

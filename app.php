@@ -1,5 +1,17 @@
 <?php
+//Need root path to project
+define("ROOT_PATH", __DIR__);
+
+//use path to log
+$defaultLogPath = getenv('LOG_PATH') ?: ROOT_PATH . "/storage/logs/";
+
+define("LOG_FILE", $defaultLogPath . getenv("LOG_FILE_NAME"));
+
 date_default_timezone_set('UTC');
+
+$app = new \Notification\Resources\App();
+
+$app::make("log");
 
 $config = [
     'method' => null,

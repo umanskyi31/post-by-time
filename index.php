@@ -2,19 +2,16 @@
 //only on dev
 error_reporting(E_ALL);
 
-//Need root path to project
-define("ROOT_PATH", __DIR__);
-
-require ROOT_PATH . '/vendor/autoload.php';
-
-//Include data which represent data from browser or cli
-$config = include ROOT_PATH . "/app.php";
+require __DIR__ . '/vendor/autoload.php';
 
 try {
-    (new \Dotenv\Dotenv(ROOT_PATH))->load();
+    (new \Dotenv\Dotenv(__DIR__))->load();
 } catch (Dotenv\Exception\InvalidPathException $e) {
     echo $e->getMessage() . ' ' . $e->getCode();
 }
+
+//Include data which represent data from browser or cli
+$config = include __DIR__ . "/app.php";
 
 //Create object for PostBot
 $postByTime  = new \Notification\PostBot(
@@ -33,7 +30,7 @@ $argv = $config['data'] ?? [];
 $postByTime->send($config['method'], $argv);
 
 //waite answer from server
-//sleep(5);
+sleep(1);
 
 //answer from server
 echo $postByTime->getMessage();
