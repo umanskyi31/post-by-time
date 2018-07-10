@@ -1,6 +1,6 @@
 <?php
 
-namespace Notification\Resources;
+namespace Notification;
 
 use Symfony\Component\Yaml\Yaml;
 
@@ -25,7 +25,10 @@ class App
            throw new \Exception("Not found container");
         }
 
-        self::$container = $containerArr['container'];
+        foreach ($containerArr['container'] as $key => $container) {
+            self::$container[$key] = new $container;
+        }
+
     }
 
     /**
@@ -36,8 +39,17 @@ class App
         return self::$container;
     }
 
-    public static function __callStatic($name, $arguments)
+    /**
+     * @param string $key
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function getContainerByKey(string $key)
     {
-        // TODO: Implement __callStatic() method.
+        if (empty(self::$container[$key])) {
+            throw new \Exception('Container with this key is not found');
+        }
+
+        return self::$container[$key];
     }
 }

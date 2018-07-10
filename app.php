@@ -9,9 +9,6 @@ define("LOG_FILE", $defaultLogPath . getenv("LOG_FILE_NAME"));
 
 date_default_timezone_set('UTC');
 
-$app = new \Notification\Resources\App();
-
-$app::make("log");
 
 $config = [
     'method' => null,
