@@ -5,6 +5,7 @@ namespace Notification;
 use Notification\Fields\FieldsInterface;
 use Notification\Requests\RequestsInterface;
 use Notification\Resources\ResourcesInterface;
+use Notification\App;
 
 final class PostBot implements Notification
 {
@@ -92,7 +93,7 @@ final class PostBot implements Notification
         // TODO: Implement timer() method.
     }
 
-    public function getMessage()
+    public function getMessage():string
     {
         $this->getResources()->parse();
 

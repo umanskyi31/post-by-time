@@ -1,6 +1,6 @@
 Telegram bot  **POST-BY-TIME**
 ==============================
-[![Build Status](https://travis-ci.org/umanskyi31/post-by-time.svg?branch=master)](https://travis-ci.org/umanskyi31/post-by-time)
+[![Build Status](https://travis-ci.org/vumanskyi/post-by-time.svg?branch=master)](https://travis-ci.org/vumanskyi/post-by-time)
 [![Coverage Status](https://coveralls.io/repos/github/umanskyi31/post-by-time/badge.svg)](https://coveralls.io/github/umanskyi31/post-by-time)
 
 In development....

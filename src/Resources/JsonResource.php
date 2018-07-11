@@ -1,6 +1,8 @@
 <?php
 namespace Notification\Resources;
 
+use Notification\Exception\NotificationException;
+
 class JsonResource implements ResourcesInterface
 {
     /**
@@ -51,6 +53,7 @@ class JsonResource implements ResourcesInterface
      * Build response structure
      *
      * @return mixed
+     * @throws NotificationException
      */
     public function parse()
     {
@@ -58,7 +61,7 @@ class JsonResource implements ResourcesInterface
             $resource = json_decode($this->getResource());
 
             if (!isset($resource->ok) && !$resource->ok) {
-               return $this->setResponse('Sorry, but server temporary not available');
+                throw new NotificationException('Sorry, but server temporary not available');
             }
 
 
@@ -77,7 +80,7 @@ class JsonResource implements ResourcesInterface
             return $this->setResponse($response);
 
         } catch (\Exception $e) {
-            echo $e->getCode() . ' ' . $e->getMessage();
+            throw new NotificationException('Something went wrong. Error with resources');
         }
     }
 }

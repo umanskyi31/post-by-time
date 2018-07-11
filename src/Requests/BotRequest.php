@@ -2,6 +2,8 @@
 
 namespace Notification\Requests;
 
+use Notification\Exception\NotificationException;
+
 class BotRequest implements RequestsInterface
 {
     /**
@@ -62,6 +64,7 @@ class BotRequest implements RequestsInterface
      * @param string $method
      * @param array $data
      * @return string
+     * @throws NotificationException
      */
     public function send(string $url, string $method, array $data = array()): string
     {
@@ -93,7 +96,7 @@ class BotRequest implements RequestsInterface
             return $result;
 
         } catch (\Exception $e) {
-            echo $e->getMessage() . ' ' . $e->getCode();
+            throw new NotificationException('Something went wrong. Error with server');
         }
     }
 }
